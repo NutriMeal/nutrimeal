@@ -1,4 +1,4 @@
-package entity;
+package com.example.nutrimeal.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,16 +13,16 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idIngredient;
 	
-	@Column
+	@Column(name = "LIBELLE")
 	private String libelle;
 
-	@Column
+	@Column(name = "UNITE_MESURE")
 	private String uniteMesure;
 	
-	@Column
+	@Column(name = "VITAMINES")
 	private Double vitamines;
 	
-	@Column
+	@Column(name = "MINERAUX")
 	private Double mineraux;
 
 	public Long getIdIngredient() {

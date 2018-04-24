@@ -1,16 +1,17 @@
-package entity;
+package com.example.nutrimeal.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 
 public class RecetteIngredient {
 
-	@Column
+	@Id
 	private Long idRecette;
 	
-	@Column
+	@Id
 	private Long idIngredient;
 	
-	@Column
+	@Column(name = "QUANTITE")
 	private Double quantite;
 	
 }

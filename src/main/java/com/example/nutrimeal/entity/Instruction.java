@@ -1,4 +1,4 @@
-package entity;
+package com.example.nutrimeal.entity;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -11,13 +11,13 @@ public class Instruction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idInstruction;
 	
-	@Column
+	@Column(name = "CHRONO")
 	private Long chrono;
 	
-	@Column
+	@Column(name = "LIBELLE")
 	private String libelle;
 	
-	@Column
+	@Column(name = "ID_RECETTE")
 	private Long idRecette;
 
 	public Long getIdInstruction() {
