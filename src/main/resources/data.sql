@@ -1,46 +1,29 @@
--- RECETTES
-INSERT INTO recette(id_recette, nom_recette, min_par_por, vit_par_por, temps_prepa)
-VALUES (1, 'Lasagnes', 50, 37, 120);
+insert into recette(ID_RECETTE, NOM_RECETTE)
+values(1, 'Salade césar');
 
-INSERT INTO recette(id_recette, nom_recette, min_par_por, vit_par_por, temps_prepa)
-VALUES (2, 'Sandwich à la fraise', 60, 80, 110);
+insert into recette(ID_RECETTE, NOM_RECETTE)
+values(2, 'Steak frite');
 
--- INGREDIENTS
-INSERT INTO ingredient(id_ingredient, libelle, unite_mesure, vitamines, mineraux)
-VALUES (1, 'Pomme de terre', 'g', 150.46, 20.45);
 
-INSERT INTO ingredient(id_ingredient, libelle, unite_mesure, vitamines, mineraux)
-VALUES (2, 'Crème fraîche', 'cl', 150.46, 20.45);
+insert into ingredient(ID_INGREDIENT, LIBELLE, VITAMINES, MINERAUX)
+values (1, 'Carottes',405,438);
 
-INSERT INTO ingredient(id_ingredient, libelle, unite_mesure, vitamines, mineraux)
-VALUES (3, 'fraise', 'g', 150.46, 20.45);
+insert into ingredient(ID_INGREDIENT, LIBELLE, VITAMINES, MINERAUX)
+values (2, 'Pommes de terre',410,39);
 
-INSERT INTO ingredient(id_ingredient, libelle, unite_mesure, vitamines, mineraux)
-VALUES (4, 'pate à tarte', 'g', 1.2, 65.4);
+insert into ingredient(ID_INGREDIENT, LIBELLE, VITAMINES, MINERAUX)
+values (3, 'Steak',40,48);
 
--- RECETTE INGREDIENT
-INSERT INTO recette_ingredient(id_recette, id_ingredient, quantite)
-VALUES (1, 1, 50);
 
-INSERT INTO recette_ingredient(id_recette, id_ingredient, quantite)
-VALUES (1, 2, 35);
+insert into recette_ingredient(ID_RECETTE, ID_INGREDIENT, QUANTITE)
+values (1,2,34);
 
-INSERT INTO recette_ingredient(id_recette, id_ingredient, quantite)
-VALUES (2, 3, 70);
+insert into recette_ingredient(ID_RECETTE, ID_INGREDIENT, QUANTITE)
+values (1,1,2);
 
-INSERT INTO recette_ingredient(id_recette, id_ingredient, quantite)
-VALUES (2, 4, 40);
+insert into recette_ingredient(ID_RECETTE, ID_INGREDIENT, QUANTITE)
+values (2,3,10);
 
--- INSTRUCTIONS 
+insert into recette_ingredient(ID_RECETTE, ID_INGREDIENT, QUANTITE)
+values (2,1,3);
 
-INSERT INTO instruction(id_instruction, chrono, libelle, id_recette)
-VALUES (1, 1, 'Prends tes patates et fous les tois dans le ***', 1);
-
-INSERT INTO instruction(id_instruction, chrono, libelle, id_recette)
-VALUES (2, 2, 'Et maintenant manges tes lasagnes', 1);
-
-INSERT INTO instruction(id_instruction, chrono, libelle, id_recette)
-VALUES (3, 1, 'prend les fraises, jette les', 2);
-
-INSERT INTO instruction(id_instruction, chrono, libelle, id_recette)
-VALUES (4, 2, 'vas acheter un vrai sandwich à la fraise', 2);
