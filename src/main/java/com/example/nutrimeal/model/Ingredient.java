@@ -1,28 +1,44 @@
-package com.example.nutrimeal.entity;
+package com.example.nutrimeal.model;
+
+
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name = "INGREDIENT")
 public class Ingredient {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idIngredient;
+    @Column(name = "ID_INGREDIENT")
+	private Long idIngredient;
 	
-	@Column(name = "LIBELLE")
+	 @OneToMany(mappedBy="ingredients")
+	 public Set<RecetteIngredient> listeRecettes = new HashSet<>();
+
+	@Column
 	private String libelle;
+	
+	@Column
+	private Double quantite;
 
 	@Column(name = "UNITE_MESURE")
 	private String uniteMesure;
 	
-	@Column(name = "VITAMINES")
+	@Column
 	private Double vitamines;
 	
-	@Column(name = "MINERAUX")
+	@Column
 	private Double mineraux;
 
 	public Long getIdIngredient() {
@@ -39,6 +55,14 @@ public class Ingredient {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	public Double getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(Double quantite) {
+		this.quantite = quantite;
 	}
 
 	public String getUniteMesure() {
@@ -64,5 +88,5 @@ public class Ingredient {
 	public void setMineraux(Double mineraux) {
 		this.mineraux = mineraux;
 	}
-	
+
 }

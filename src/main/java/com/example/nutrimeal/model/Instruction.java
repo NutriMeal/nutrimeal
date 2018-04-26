@@ -1,23 +1,25 @@
-package com.example.nutrimeal.entity;
+package com.example.nutrimeal.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Instruction {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idInstruction;
 	
-	@Column(name = "CHRONO")
+	@Column
 	private Long chrono;
 	
-	@Column(name = "LIBELLE")
+	@Column
 	private String libelle;
 	
-	@Column(name = "ID_RECETTE")
+	@Column
 	private Long idRecette;
 
 	public Long getIdInstruction() {
