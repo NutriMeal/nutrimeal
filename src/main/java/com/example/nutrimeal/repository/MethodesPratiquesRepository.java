@@ -17,15 +17,15 @@ public class MethodesPratiquesRepository {
 	 * 
 	 * @param listeAsString
 	 * 			Liste d'id au format String : nombres séparés par des virgules
-	 * @return List<Long> listIdAsLong
+	 * @return listeIdAsLong
 	 */
 	public List<Long> convertirStringIdEnListeLong(String listeAsString){
 		
-		List<Long> listIdAsLong = new ArrayList<Long>();
+		List<Long> listeIdAsLong = new ArrayList<Long>();
 	
 		for(String idAsString : listeAsString.split(",")) {
-			listIdAsLong.add(Long.parseLong(idAsString));
+			listeIdAsLong.add(Long.parseLong(idAsString));
 		}
-		return listIdAsLong;
+		return listeIdAsLong;
 	}
 }

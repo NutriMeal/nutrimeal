@@ -13,80 +13,49 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 
 @Entity
 @Table(name = "INGREDIENT")
 public class Ingredient {
-
+	
+	@Getter
+	@Setter
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_INGREDIENT")
 	private Long idIngredient;
 	
-	 @OneToMany(mappedBy="ingredients")
-	 public Set<RecetteIngredient> listeRecettes = new HashSet<>();
+	@Getter
+	@Setter
+	@OneToMany(mappedBy="ingredients")
+	public Set<RecetteIngredient> listeRecettes = new HashSet<>();
 
+	@Getter
+	@Setter
 	@Column
 	private String libelle;
 	
+	@Getter
+	@Setter
 	@Column
 	private Double quantite;
 
+	@Getter
+	@Setter
 	@Column(name = "UNITE_MESURE")
 	private String uniteMesure;
 	
+	@Getter
+	@Setter
 	@Column
 	private Double vitamines;
 	
+	@Getter
+	@Setter
 	@Column
 	private Double mineraux;
-
-	public Long getIdIngredient() {
-		return idIngredient;
-	}
-
-	public void setIdIngredient(Long idIngredient) {
-		this.idIngredient = idIngredient;
-	}
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-
-	public Double getQuantite() {
-		return quantite;
-	}
-
-	public void setQuantite(Double quantite) {
-		this.quantite = quantite;
-	}
-
-	public String getUniteMesure() {
-		return uniteMesure;
-	}
-
-	public void setUniteMesure(String uniteMesure) {
-		this.uniteMesure = uniteMesure;
-	}
-
-	public Double getVitamines() {
-		return vitamines;
-	}
-
-	public void setVitamines(Double vitamines) {
-		this.vitamines = vitamines;
-	}
-
-	public Double getMineraux() {
-		return mineraux;
-	}
-
-	public void setMineraux(Double mineraux) {
-		this.mineraux = mineraux;
-	}
 
 }

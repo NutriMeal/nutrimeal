@@ -1,4 +1,8 @@
 package com.example.nutrimeal.model;
+
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 
  * @author Gaetan Inidjel
@@ -6,24 +10,14 @@ package com.example.nutrimeal.model;
  */
 public class BilanSemaine {
 
+	@Getter
+	@Setter
 	private Double bilanVitaminal;
 	
+	@Getter
+	@Setter
 	private Double BilanMineral;
 
-	public Double getBilanVitaminal() {
-		return bilanVitaminal;
-	}
 
-	public void setBilanVitaminal(Double bilanVitaminal) {
-		this.bilanVitaminal = bilanVitaminal;
-	}
-
-	public Double getBilanMineral() {
-		return BilanMineral;
-	}
-
-	public void setBilanMineral(Double bilanMineral) {
-		BilanMineral = bilanMineral;
-	}
 	
 }

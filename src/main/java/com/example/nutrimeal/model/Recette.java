@@ -11,55 +11,33 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 
 @Entity
 @Table(name = "RECETTE")
 public class Recette {
 
+	@Getter
+	@Setter
 	@Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_RECETTE")
     public Long idRecette;	
 
+	@Getter
+	@Setter
     @OneToMany(mappedBy="recette")
     public Set<RecetteIngredient> recetteIngredients = new HashSet<>();
 
+	@Getter
+	@Setter
 	@Column(name = "NOM_RECETTE")
 	private String nomRecette;
 	
+	@Getter
+	@Setter
 	@Column(name = "TEMPS_PREPARATION")
 	private Integer tempsPreparation;
-
-	public Long getIdRecette() {
-		return idRecette;
-	}
-
-	public void setIdRecette(Long idRecette) {
-		this.idRecette = idRecette;
-	}
-
-	public Set<RecetteIngredient> getRecetteIngredients() {
-		return recetteIngredients;
-	}
-
-	public void setRecetteIngredients(Set<RecetteIngredient> recetteIngredients) {
-		this.recetteIngredients = recetteIngredients;
-	}
-
-	public String getNomRecette() {
-		return nomRecette;
-	}
-
-	public void setNomRecette(String nomRecette) {
-		this.nomRecette = nomRecette;
-	}
-
-	public Integer getTempsPreparation() {
-		return tempsPreparation;
-	}
-
-	public void setTempsPreparation(Integer tempsPreparation) {
-		this.tempsPreparation = tempsPreparation;
-	}
-	
 }
