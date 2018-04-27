@@ -31,7 +31,7 @@ public class ExportBilanPdfService {
 	CalculService calculService;
 	
 	public void export(OutputStream outputStream, String listeIdAsString) 
-			throws com.itextpdf.text.DocumentException  {
+			throws Exception  {
 		
 		Document document = new Document();
 		PdfWriter.getInstance(document, outputStream);
@@ -61,13 +61,8 @@ public class ExportBilanPdfService {
 			    table.addCell(cell);
 		    }
 		    
-			
-
-		    
 		    Double totalVitaminesRecette = 0d;
 		    Double totalMinerauxRecette = 0d;
-		    
-		    
 		    
 			for(RecetteIngredient ingredient : recette.getRecetteIngredients()) {
 			
@@ -102,12 +97,10 @@ public class ExportBilanPdfService {
 			table.setSpacingAfter(50);
 			
 			document.add(table);
-			
-			
 		}
 		
-		Double totalVitamines = calculService.calculVitaminesParRecette(listeIdAsString);
-		Double totalMineraux = calculService.calculMinerauxParRecette(listeIdAsString);
+		Double totalVitamines = calculService.calculVitaminesPourListeRecette(listeIdAsString);
+		Double totalMineraux = calculService.calculMinerauxPourListeRecettes(listeIdAsString);
 		
 		
 		

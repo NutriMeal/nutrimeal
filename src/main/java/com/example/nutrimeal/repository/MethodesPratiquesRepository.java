@@ -19,13 +19,20 @@ public class MethodesPratiquesRepository {
 	 * 			Liste d'id au format String : nombres séparés par des virgules
 	 * @return listeIdAsLong
 	 */
-	public List<Long> convertirStringIdEnListeLong(String listeAsString){
+	public List<Long> convertirStringIdEnListeLong(String listeAsString) throws Exception{
 		
 		List<Long> listeIdAsLong = new ArrayList<Long>();
 	
+		try {
+		
 		for(String idAsString : listeAsString.split(",")) {
 			listeIdAsLong.add(Long.parseLong(idAsString));
 		}
+		
+		} catch(Error e) {
+			listeIdAsLong = new ArrayList<Long>();
+		}
+		
 		return listeIdAsLong;
 	}
 	

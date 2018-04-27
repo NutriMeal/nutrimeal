@@ -2,8 +2,6 @@ package com.example.nutrimeal.repository;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,7 @@ public class MethodesPratiquesRepositoryTests {
 	
 	//Test de la méthode de split de la liste d'id en String et convertion en Long
 	@Test
-	public void separationIdStringTest() {
+	public void separationIdStringTest() throws Exception {
 		
 		String listeIdAsString = "12,13,14,17";
 

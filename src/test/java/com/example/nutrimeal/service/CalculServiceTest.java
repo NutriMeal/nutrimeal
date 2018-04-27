@@ -18,7 +18,7 @@ public class CalculServiceTest {
 	private EntityManager em;
 	
 	@Test
-	public void calculMineraux() {
+	public void calculMineraux() throws Exception {
 		
 		Recette recette = new Recette();
 		recette.setIdRecette(1L);
@@ -37,7 +37,7 @@ public class CalculServiceTest {
 		ingredient.setIdIngredient(1L);
 		em.persist(ingredient);
 		
-		Double calcul = calculService.calculMinerauxParRecette("1");
+		Double calcul = calculService.calculMinerauxPourListeRecettes("1");
 		
 		calcul = calcul + 2;
 		

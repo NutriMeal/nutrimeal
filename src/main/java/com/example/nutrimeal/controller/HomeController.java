@@ -26,23 +26,25 @@ public class HomeController {
 	@Autowired
 	CalculService calculService;
 	
+	/**
+	 * Méthode du restController qui export en PDF les recettes sélectionnées dans l'onglet Bilan
+	 * 
+	 * @param listeIdAsString
+	 * 			Liste d'ID sous forme de chaine de caractères (ex : "12,13,42")
+	 * @return
+	 * 			Export pdf du bilan de la semaine
+	 * @throws Exception 
+	 */
 	@RequestMapping(value = "/bilan/{listeId}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<?> getListeId(@PathVariable("listeId") String listeIdAsString){	
+	public ResponseEntity<?> getListeId(@PathVariable("listeId") String listeIdAsString) throws Exception{	
 		
-		Double bilanVitaminique = calculService.calculVitaminesParRecette(listeIdAsString);
-		Double bilanMineral = calculService.calculMinerauxParRecette(listeIdAsString);
+		BilanSemaine bilan = calculService.bilanSemaine(listeIdAsString);
 		
-		BilanSemaine bilan = new BilanSemaine();
-	
-		bilan.setBilanMineral(bilanMineral);
-		bilan.setBilanVitaminal(bilanVitaminique);
-		
-		
-		if (!listeIdAsString.isEmpty()) {
+		if ((bilan != null) && (bilan != null)) {
 			return new ResponseEntity<>(bilan, HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>(bilan, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(bilan, HttpStatus.BAD_GATEWAY);
 		}
 	}
 	
