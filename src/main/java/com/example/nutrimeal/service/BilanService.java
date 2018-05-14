@@ -28,8 +28,8 @@ public class BilanService {
 	/**
 	 * La méthode qui somme les vitamines des ingrédients de la recette
 	 * 
-	 * @param listeIdAsString
-	 * 		Liste de RECETTE.ID_RECETTE en string, nombres séparés par des virgules (ex : "12,14,15")
+	 * @param Recette
+	 * 		Un objet Recette
 	 * @return vitaminesTotales
 	 * 		Retourne le bilan en minéraux de la recette (Double)
 	 * @throws Exception 
@@ -42,7 +42,7 @@ public class BilanService {
 	//Pour chaque idRecette
 		
 		// Les ingrédients sont récupérés
-		Set<RecetteIngredient> ingredients = recetteService.getRecetteById(recette.idRecette).getRecetteIngredients();
+		Set<RecetteIngredient> ingredients = recette.getRecetteIngredients();
 		
 		// Pour chaque ingrédient, la quantité est multipliée par les vitamines par ingrédient.
 		for(RecetteIngredient ingredient : ingredients) {
@@ -56,8 +56,8 @@ public class BilanService {
 /**
  * Méthode qui somme les minéraux des ingrédients de la recette
  * 
- * @param listeIdAsString
- * 			Liste de RECETTE.ID_RECETTE en string, nombres séparés par des virgules (ex : "12,14,15")
+ * @param Recette
+ * 			Un objet Recette
  * @return minerauxTotaux
  * 			Retourne le bilan en minéraux de la recette (Double)
  * @throws Exception 
@@ -70,7 +70,7 @@ public class BilanService {
 		//Pour chaque idRecette
 	
 			// Les ingrédients sont récupérés
-			Set<RecetteIngredient> ingredients = recetteService.getRecetteById(recette.idRecette).getRecetteIngredients();
+			Set<RecetteIngredient> ingredients = recette.getRecetteIngredients();
 			
 			// Pour chaque ingrédient, la quantité est multipliée par les minéraux par ingrédient.
 			for(RecetteIngredient ingredient : ingredients) {
@@ -85,8 +85,8 @@ public class BilanService {
 /**
  * 	Méthode qui renvoie un JSON pour le calcul du bilan de la semaine
  * 
- * @param listeIdAsString
- * 		Liste de RECETTE.ID_RECETTE en string, nombres séparés par des virgules (ex : "12,14,15")
+ * @param listeRecettes
+ * 		Liste de Recettes
  * @return
  * 		Un objet BilanSemaine qui sera renvoyé en JSON
  * @throws Exception
