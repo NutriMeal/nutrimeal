@@ -12,7 +12,7 @@ import com.example.nutrimeal.model.RecetteIngredient;
 public class CalculServiceTest {
 
 	@Autowired
-	CalculService calculService;
+	BilanService calculService;
 	
 	@Autowired
 	private EntityManager em;

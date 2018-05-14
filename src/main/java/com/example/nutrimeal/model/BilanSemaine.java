@@ -5,23 +5,18 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * 
- * @author Gaetan Inidjel
- *
- */
 public class BilanSemaine {
 
 	@Getter
 	@Setter
+	private List<Recette> listeRecettes;
+	
+	@Getter
+	@Setter
+	private Double bilanMineral;
+	
+	@Getter
+	@Setter
 	private Double bilanVitaminal;
-	
-	@Getter
-	@Setter
-	private Double BilanMineral;
-	
-	@Getter
-	@Setter
-	private List<ListeRecettesBilanSemaine> recettes;
 	
 }

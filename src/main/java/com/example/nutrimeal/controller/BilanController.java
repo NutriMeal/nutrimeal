@@ -1,16 +1,20 @@
 package com.example.nutrimeal.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.nutrimeal.model.BilanSemaine;
+import com.example.nutrimeal.model.Recette;
 import com.example.nutrimeal.repository.MethodesPratiquesRepository;
-import com.example.nutrimeal.service.CalculService;
+import com.example.nutrimeal.service.BilanService;
 
 /**
  * 
@@ -18,13 +22,13 @@ import com.example.nutrimeal.service.CalculService;
  *
  */
 @RestController
-public class HomeController {
+public class BilanController {
 
 	@Autowired
 	MethodesPratiquesRepository methodes;
 	
 	@Autowired
-	CalculService calculService;
+	BilanService bilanService;
 	
 	/**
 	 * Méthode du restController qui export en PDF les recettes sélectionnées dans l'onglet Bilan
@@ -35,16 +39,16 @@ public class HomeController {
 	 * 			Export pdf du bilan de la semaine
 	 * @throws Exception 
 	 */
-	@RequestMapping(value = "/bilan/{listeId}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<?> getListeId(@PathVariable("listeId") String listeIdAsString) throws Exception{	
+	@ResponseBody @RequestMapping(value = "/bilan", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<?> getListeRecettes(@RequestBody List<Recette> listeRecettes) throws Exception{	
 		
-		BilanSemaine bilan = calculService.bilanSemaine(listeIdAsString);
+		BilanSemaine bilan = bilanService.bilanSemaine(listeRecettes);
 		
-		if ((bilan != null) && (bilan != null)) {
+		if (bilan != null) {
 			return new ResponseEntity<>(bilan, HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>(bilan, HttpStatus.BAD_GATEWAY);
+			return new ResponseEntity<>(bilan, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

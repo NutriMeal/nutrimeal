@@ -19,7 +19,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 @Service
-public class ExportBilanPdfService {
+public class ExportService {
 
 	private final String UNITE = "unite";
 	
@@ -28,24 +28,38 @@ public class ExportBilanPdfService {
 	@Autowired
 	MethodesPratiquesRepository methodesPratiquesRepository;
 	@Autowired
-	CalculService calculService;
+	BilanService bilanService;
 	
-	public void export(OutputStream outputStream, String listeIdAsString) 
+	/**
+	 * Export PDF du bilan de la semaine
+	 * 
+	 * @param outputStream
+	 * 			Export de Bytes utilisé par PdfWriter pour l'export pdf
+	 * @param listeIdAsString
+	 * 			Liste d'id en chaine de caractères (ex : "1,2") séparés par des virgules
+	 * @throws Exception
+	 * 			On throws une exception
+	 */
+	public void exportBilanPdfService(OutputStream outputStream, List<Recette> listeRecettes) 
 			throws Exception  {
 		
 		Document document = new Document();
 		PdfWriter.getInstance(document, outputStream);
-		
-		List<Long> listeId = methodesPratiquesRepository.convertirStringIdEnListeLong(listeIdAsString);
-		
+				
 		document.open();
 
-		for (Long id : listeId) {
+		Double totalVitamines = 0d;
+		Double totalMineraux = 0d;
 		
+		
+		for (Recette recette : listeRecettes) {
+		
+			totalVitamines += bilanService.calculVitaminesPourRecette(recette);
+			totalMineraux += bilanService.calculMinerauxPourRecette(recette);
+			
 			PdfPCell cell;
 			PdfPTable table = new PdfPTable(4);
 			
-			Recette recette = recetteRepository.getOne(id);
 			
 			cell = new PdfPCell(new Phrase("Composition de la recette : " + recette.getNomRecette()));
 		    cell.setColspan(4);
@@ -99,15 +113,12 @@ public class ExportBilanPdfService {
 			document.add(table);
 		}
 		
-		Double totalVitamines = calculService.calculVitaminesPourListeRecette(listeIdAsString);
-		Double totalMineraux = calculService.calculMinerauxPourListeRecettes(listeIdAsString);
-		
 		
 		
 		document.add(new Paragraph("Le bilan en vitamines est de " + methodesPratiquesRepository.
-				deuxChiffresSignificatifs(totalVitamines/1000) ));	
+				deuxChiffresSignificatifs(totalVitamines/1000) + " g " ));	
 		document.add(new Paragraph("Le bilan en mineraux est de " + methodesPratiquesRepository.
-				deuxChiffresSignificatifs(totalMineraux/1000)));
+				deuxChiffresSignificatifs(totalMineraux/1000) + " g "));
 		
 		document.close();
 	}
