@@ -39,7 +39,7 @@ public class BilanController {
 	 * 			Export pdf du bilan de la semaine
 	 * @throws Exception 
 	 */
-	@ResponseBody @RequestMapping(value = "/bilan", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/bilan", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<?> getListeRecettes(@RequestBody List<Recette> listeRecettes) throws Exception{	
 		
 		BilanSemaine bilan = bilanService.bilanSemaine(listeRecettes);
