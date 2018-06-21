@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.nutrimeal.model.BilanSemaine;
@@ -39,7 +38,7 @@ public class BilanController {
 	 * 			Export pdf du bilan de la semaine
 	 * @throws Exception 
 	 */
-	@RequestMapping(value = "/bilan", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/bilan", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<?> getListeRecettes(@RequestBody List<Recette> listeRecettes) throws Exception{	
 		
 		BilanSemaine bilan = bilanService.bilanSemaine(listeRecettes);

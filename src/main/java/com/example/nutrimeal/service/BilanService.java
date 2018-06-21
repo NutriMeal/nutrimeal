@@ -95,11 +95,12 @@ public BilanSemaine bilanSemaine(List<Recette> listeRecettes) throws Exception{
 				
 		Double bilanVitaminesTotales = 0d;
 		Double bilanMinerauxTotaux = 0d;
-			
+		
 		BilanSemaine bilan = new BilanSemaine();
 		
 		for(Recette recette : listeRecettes) {
 			
+			recette = recetteService.getRecetteById(recette.idRecette);
 			Double bilanVitaminiqueParRecette = calculVitaminesPourRecette(recette);
 			Double bilanMineralParRecette = calculMinerauxPourRecette(recette);
 			
@@ -108,9 +109,7 @@ public BilanSemaine bilanSemaine(List<Recette> listeRecettes) throws Exception{
 			
 			recette.setMinerauxParPortion(bilanMineralParRecette);
 			recette.setVitaminesParPortion(bilanVitaminiqueParRecette);
-			
 		}
-		
 		bilan.setListeRecettes(listeRecettes);
 		bilan.setBilanMineral(bilanMinerauxTotaux);
 		bilan.setBilanVitaminal(bilanVitaminesTotales);
