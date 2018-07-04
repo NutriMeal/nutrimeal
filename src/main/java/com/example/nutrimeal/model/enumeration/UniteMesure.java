@@ -1,20 +1,7 @@
 package com.example.nutrimeal.model.enumeration;
 
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.assertj.core.util.Arrays;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.util.EnumValues;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public enum UniteMesure {

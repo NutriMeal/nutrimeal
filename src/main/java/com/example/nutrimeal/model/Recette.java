@@ -29,10 +29,6 @@ public class Recette {
 
     @OneToMany(mappedBy="idRecette")
     private Set<RecetteIngredient> recetteIngredients = new HashSet<>();
-    
-    @OneToMany(mappedBy="recetteId")
-    @OrderBy(value = "chrono")
-    private Set<Instruction> instructions = new LinkedHashSet<>();
 
 	@Column(name = "NOM_RECETTE")
 	private String nomRecette;
@@ -47,6 +43,10 @@ public class Recette {
 	private Double vitaminesParPortion;
 	
 	@Column(name = "image_recette")
-	private String base64ImageCode;
+	private String base64ImageCode;	
+	
+	@OneToMany(mappedBy="recetteId")
+    @OrderBy(value = "chrono")
+    private Set<Instruction> instructions = new LinkedHashSet<>();
 	
 }
